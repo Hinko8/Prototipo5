@@ -3,7 +3,6 @@ import streamlit as st
 
 st.title("Calculadora y Simulador Solar ☀️")
 
-# Menú principal como selección
 opcion = st.selectbox(
     "¿Qué operación deseas realizar?",
     (
@@ -17,6 +16,7 @@ if opcion == "Calcular paneles necesarios":
       "Ingrese la cantidad de energía a satisfacer (watts):",
       min_value=0.0,
       value=1000.0,
+      step=100.0,  
   )
 
   tipo_panel = st.selectbox(
@@ -37,10 +37,16 @@ if opcion == "Calcular paneles necesarios":
 
 else:
   cantidad_panel = st.number_input(
-      "Ingrese la cantidad de paneles a disposición:", min_value=0, value=4
+      "Ingrese la cantidad de paneles a disposición:",
+      min_value=0,
+      value=4,
+      step=1,
   )
   produccion_panel = st.number_input(
-      "Energía generada por cada panel (watts):", min_value=0.0, value=450.0
+      "Energía generada por cada panel (watts):",
+      min_value=0.0,
+      value=450.0,
+      step=50.0,
   )
 
   if st.button("Simular"):
